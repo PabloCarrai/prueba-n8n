@@ -1,0 +1,14 @@
+services:
+  n8n:
+    image: n8nio/n8n:${N8N_VERSION}
+    container_name: n8n
+    ports:
+      - "${N8N_VM_IP}:${N8N_PORT}:5678"
+    environment:
+      - TZ=${TZ}
+      - N8N_ENCRYPTION_KEY=${N8N_ENCRYPTION_KEY}
+      - WEBHOOK_URL=${WEBHOOK_URL}
+      - GENERIC_TIMEZONE=${TZ}
+    volumes:
+      - ${N8N_DATA_PATH}:/home/node/.n8n
+    restart: always
